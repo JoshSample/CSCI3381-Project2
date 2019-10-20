@@ -87,7 +87,7 @@ public class MainPanel extends JPanel {
 				else if (comboBox.getSelectedItem().equals("Remove Patient")) {
 					String id = JOptionPane.showInputDialog(btnGo, "Enter Patient ID", "Remove", JOptionPane.PLAIN_MESSAGE);
 					if (myData.getPatient(id) == null)
-						JOptionPane.showMessageDialog(btnGo, "No patient has that ID, returning home.");
+						JOptionPane.showMessageDialog(btnGo, "Couldn't remove patient, returning home.");
 					else {
 						myData.removePatient(id);
 						JOptionPane.showMessageDialog(btnGo, "Removed Patient");
@@ -128,7 +128,7 @@ public class MainPanel extends JPanel {
 							JOptionPane.showMessageDialog(btnGo, p, "View Patient", JOptionPane.PLAIN_MESSAGE);
 						}
 						// Shows risk factors
-						else {
+						else if (risk.isSelected()){
 							ArrayList<String> results = myData.getRiskFactors(p.getACEs());
 							JOptionPane.showMessageDialog(btnGo, "Patient " + p.getId() + " has these risk factors:\n" 
 									+ results, "Risk Factors", JOptionPane.PLAIN_MESSAGE);
