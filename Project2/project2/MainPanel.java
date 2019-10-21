@@ -105,33 +105,45 @@ public class MainPanel extends JPanel {
 						JRadioButton add = new JRadioButton("Add ACE");
 						JRadioButton view = new JRadioButton("View Patient Data");
 						JRadioButton risk = new JRadioButton("Get Risk Factors");
+						ButtonGroup bGroup = new ButtonGroup();
+						bGroup.add(add);
+						bGroup.add(view);
+						bGroup.add(risk);
 						panel.add(add);
 						panel.add(view);
 						panel.add(risk);
-						JOptionPane.showOptionDialog(btnGo, panel,
+						int n = JOptionPane.showOptionDialog(btnGo, panel,
 						    "Selection", JOptionPane.OK_CANCEL_OPTION,
 						    JOptionPane.QUESTION_MESSAGE, null, null, null);
 						// Performs add
 						if (add.isSelected()) {
-							String ace;
-							int option;
-							do {
-								ace = (String) JOptionPane.showInputDialog(btnGo, "Add ACEs", "ACEs", JOptionPane.PLAIN_MESSAGE, null, aceList, aceList[0]);
-								p.addACE(ace);
-								option = JOptionPane.showConfirmDialog(btnGo, "Add Another?", "Input", JOptionPane.YES_NO_OPTION);
-							} while(option != JOptionPane.NO_OPTION);
-							myData.addPatient(p);
-							doClose();
+							if (n == JOptionPane.CANCEL_OPTION);
+							else {
+								String ace;
+								int option;
+								do {
+									ace = (String) JOptionPane.showInputDialog(btnGo, "Add ACEs", "ACEs", JOptionPane.PLAIN_MESSAGE, null, aceList, aceList[0]);
+									p.addACE(ace);
+									option = JOptionPane.showConfirmDialog(btnGo, "Add Another?", "Input", JOptionPane.YES_NO_OPTION);
+								} while(option != JOptionPane.NO_OPTION);
+								myData.addPatient(p);
+								doClose();
+							}
 						}
 						// Performs view
 						else if (view.isSelected()) {
-							JOptionPane.showMessageDialog(btnGo, p, "View Patient", JOptionPane.PLAIN_MESSAGE);
+							if (n == JOptionPane.CANCEL_OPTION);
+							else
+								JOptionPane.showMessageDialog(btnGo, p, "View Patient", JOptionPane.PLAIN_MESSAGE);
 						}
 						// Shows risk factors
 						else if (risk.isSelected()){
-							ArrayList<String> results = myData.getRiskFactors(p.getACEs());
-							JOptionPane.showMessageDialog(btnGo, "Patient " + p.getId() + " has these risk factors:\n" 
-									+ results, "Risk Factors", JOptionPane.PLAIN_MESSAGE);
+							if (n == JOptionPane.CANCEL_OPTION);
+							else {
+								ArrayList<String> results = myData.getRiskFactors(p.getACEs());
+								JOptionPane.showMessageDialog(btnGo, "Patient " + p.getId() + " has these risk factors:\n" 
+										+ results, "Risk Factors", JOptionPane.PLAIN_MESSAGE);
+							}
 						}
 					}
 				}

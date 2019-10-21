@@ -1,4 +1,4 @@
 741,Susie,Parental separation or divorce
-1234,Richard,Physical abuse
+1234,Richard,Physical abuse,null
 123456,Terry,Physical abuse
 867,Adam,Physical abuse,Sexual abuse,Emotional abuse,Emotional neglect,Exposure to domestic violence,Parental separation,Household mental illness
