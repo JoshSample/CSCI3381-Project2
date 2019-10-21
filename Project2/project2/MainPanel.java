@@ -79,7 +79,6 @@ public class MainPanel extends JPanel {
 							option = JOptionPane.showConfirmDialog(btnGo, "Add Another?", "Input", JOptionPane.YES_NO_OPTION);
 						} while(option != JOptionPane.NO_OPTION);
 						myData.addPatient(p);
-						doClose();
 						JOptionPane.showMessageDialog(btnGo, "Added Patient.");
 					}
 				}
@@ -92,7 +91,6 @@ public class MainPanel extends JPanel {
 					else {
 						myData.removePatient(id);
 						JOptionPane.showMessageDialog(btnGo, "Removed Patient");
-						doClose();
 					}	
 				}
 				// Check patient data
@@ -129,7 +127,6 @@ public class MainPanel extends JPanel {
 									option = JOptionPane.showConfirmDialog(btnGo, "Add Another?", "Input", JOptionPane.YES_NO_OPTION);
 								} while(option != JOptionPane.NO_OPTION);
 								myData.addPatient(p);
-								doClose();
 							}
 						}
 						// Performs view
