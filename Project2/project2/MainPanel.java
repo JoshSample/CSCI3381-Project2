@@ -63,19 +63,20 @@ public class MainPanel extends JPanel {
 						id = JOptionPane.showInputDialog(btnGo, "Add Patient ID", "Patient ID", JOptionPane.PLAIN_MESSAGE);
 						if (myData.getPatient(id) != null)
 							JOptionPane.showMessageDialog(btnGo, "ID Exists, choose different ID");
-						else if (Integer.parseInt(id) == JOptionPane.CANCEL_OPTION);
 						else
 							idCheck = false;
 					} while(idCheck);
 					name = JOptionPane.showInputDialog(btnGo, "Add Patient Name", "Patient Name", JOptionPane.PLAIN_MESSAGE);
-					if (Integer.parseInt(name) == JOptionPane.CANCEL_OPTION);
+					if (name == null || name.equals("") || id == null || id.contentEquals("")) 
+						JOptionPane.showMessageDialog(btnGo, "Couldn't add patient, returning to home.");
 					else {
 						Patient p = new Patient(id, name);
 						int option;
 						String ace;
 						do {
-							ace = (String) JOptionPane.showInputDialog(btnGo, "Add ACEs", "ACEs", JOptionPane.PLAIN_MESSAGE, null, aceList, aceList[0]);
-							p.addACE(ace);
+							ace = (String) JOptionPane.showInputDialog(btnGo, "Add ACEs", "ACEs", JOptionPane.PLAIN_MESSAGE, null, aceList, null);
+							if (ace != null)
+								p.addACE(ace);
 							option = JOptionPane.showConfirmDialog(btnGo, "Add Another?", "Input", JOptionPane.YES_NO_OPTION);
 						} while(option != JOptionPane.NO_OPTION);
 						myData.addPatient(p);
@@ -123,8 +124,9 @@ public class MainPanel extends JPanel {
 								String ace;
 								int option;
 								do {
-									ace = (String) JOptionPane.showInputDialog(btnGo, "Add ACEs", "ACEs", JOptionPane.PLAIN_MESSAGE, null, aceList, aceList[0]);
-									p.addACE(ace);
+									ace = (String) JOptionPane.showInputDialog(btnGo, "Add ACEs", "ACEs", JOptionPane.PLAIN_MESSAGE, null, aceList, null);
+									if (ace != null)
+										p.addACE(ace);
 									option = JOptionPane.showConfirmDialog(btnGo, "Add Another?", "Input", JOptionPane.YES_NO_OPTION);
 								} while(option != JOptionPane.NO_OPTION);
 								myData.addPatient(p);
