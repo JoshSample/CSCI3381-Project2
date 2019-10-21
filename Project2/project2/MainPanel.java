@@ -63,12 +63,12 @@ public class MainPanel extends JPanel {
 						id = JOptionPane.showInputDialog(btnGo, "Add Patient ID", "Patient ID", JOptionPane.PLAIN_MESSAGE);
 						if (myData.getPatient(id) != null)
 							JOptionPane.showMessageDialog(btnGo, "ID Exists, choose different ID");
+						else if (Integer.parseInt(id) == JOptionPane.CANCEL_OPTION);
 						else
-						idCheck = false;
+							idCheck = false;
 					} while(idCheck);
 					name = JOptionPane.showInputDialog(btnGo, "Add Patient Name", "Patient Name", JOptionPane.PLAIN_MESSAGE);
-					if (name == null || name.equals("") || id == null || id.contentEquals("")) 
-						JOptionPane.showMessageDialog(btnGo, "Couldn't add patient, returning to home.");
+					if (Integer.parseInt(name) == JOptionPane.CANCEL_OPTION);
 					else {
 						Patient p = new Patient(id, name);
 						int option;
@@ -88,6 +88,7 @@ public class MainPanel extends JPanel {
 					String id = JOptionPane.showInputDialog(btnGo, "Enter Patient ID", "Remove", JOptionPane.PLAIN_MESSAGE);
 					if (myData.getPatient(id) == null)
 						JOptionPane.showMessageDialog(btnGo, "Couldn't remove patient, returning home.");
+					else if (Integer.parseInt(id) == JOptionPane.CANCEL_OPTION);
 					else {
 						myData.removePatient(id);
 						JOptionPane.showMessageDialog(btnGo, "Removed Patient");
